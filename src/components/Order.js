@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import burritoImg from "../images/burrito-bowl.jpg";
+import Side from "./Side"
 
 function Order(props) {
-  const [isClicked, setIsClicked] = useState(false);
+  let [isClicked, setIsClicked] = useState(false);
 
   function handleClick() {
-    isClicked = !isClicked;
+    setIsClicked(!isClicked);
   }
 
   return (
@@ -30,14 +31,14 @@ function Order(props) {
       <div className="extra content">
         {props.sides.length > 0 ? (
           <button className="ui button small" onClick={handleClick}>
-            View Sides
+           {isClicked === true ? <Side sides={props.sides} /> : 'View Slides' }
           </button>
         ) : (
           <p>No sides</p>
         )}
 
         {/* this is just a shortcut to writing state.isClicked ? <Side sides={props.sides} /> : null */}
-        {state.isClicked && <Side sides={props.sides} />}
+        {/* {props.isClicked && <Side sides={props.sides} />} */}
       </div>
     </div>
   );
